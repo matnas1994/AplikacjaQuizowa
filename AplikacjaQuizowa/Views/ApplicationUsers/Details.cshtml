@@ -1,0 +1,65 @@
+﻿@model AplikacjaQuizowa.Models.DetailsUserModelView
+
+@{
+    ViewBag.Title = "Szczegóły użytkownika";
+}
+
+<div>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Roles)
+		</dt>
+
+		<dd>
+			@foreach (var item in Model.Roles)
+			{
+				if (item.Checked)
+				{
+					<div>
+						@item.RoleName
+					</div>
+				}
+
+			}
+		</dd>
+
+	</dl>
+	<br />
+
+	<h4>Wyniki z quizów:</h4>
+	<tabel>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Kategoria</th>
+					<th>Wynik</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model.Scores)
+				{
+					<tr>
+						<td>@item.CategoriId.Name</td>
+						<td>@(item.Result * 100)%</td>
+					</tr>
+				}
+
+			</tbody>
+		</table>
+	</tabel>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Wróć do listy", "Index")
+</p>
+
+<script>
+	$("#myDIV").addClass("col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1");
+</script>

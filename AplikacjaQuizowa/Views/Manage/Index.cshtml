@@ -1,0 +1,54 @@
+﻿@model AplikacjaQuizowa.Models.ManageScoreViewModel
+
+@{
+	ViewBag.Title = "Zarządzaj";
+}
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<Center>
+	<div>
+		<h4>Zmień ustawienia konta</h4>
+		<hr />
+
+		Hasło:
+		[
+		@if (Model.IndexViewModel.HasPassword)
+		{
+			@Html.ActionLink("Zmień hasło", "ChangePassword")
+		}
+		else
+		{
+			@Html.ActionLink("Utwórz", "SetPassword")
+		}
+		]
+		<br />
+		Logowania zewnętrzne:
+		@Model.IndexViewModel.Logins.Count [
+		@Html.ActionLink("Zarządzaj", "ManageLogins") ]
+		<br />
+		<br />
+		<br />
+		<hr />
+		<h4>Wyniki z quizów:</h4>
+		<tabel>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Kategoria</th>
+						<th>Wynik</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model.Scores)
+					{
+						<tr>
+							<td>@item.CategoriId.Name</td>
+							<td>@(item.Result * 100)%</td>
+						</tr>
+					}
+
+				</tbody>
+			</table>
+		</tabel>
+	</div>
+</Center>

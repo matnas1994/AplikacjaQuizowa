@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AplikacjaQuizowa.Models.QuestionsViewModel>
+
+@{
+	ViewBag.Title = "Pytania";
+}
+
+@if (TempData["alert"] != null)
+{
+	<div class="alert alert-success alert-dismissible">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>Brawo!</strong> @TempData["alert"]
+	</div>
+}
+
+<p>
+	@Html.ActionLink("Stwórz nowe", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Contents)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Answer1)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Answer2)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Answer3)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CorrectAnswer)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Categories)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Contents)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Answer1)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Answer2)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Answer3)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CorrectAnswer)
+			</td>
+			<td>
+				@foreach (var categorie in item.Categories)
+				{
+					if (categorie.Checked)
+					{
+						@categorie.Name
+					}
+				}
+			</td>
+			<td>
+				@Html.ActionLink("Edytuj", "Edit", new { id = item.QuestionId }) |
+				@Html.ActionLink("Szczegóły", "Details", new { id = item.QuestionId }) |
+				@Html.ActionLink("Usuń", "Delete", new { id = item.QuestionId })
+			</td>
+		</tr>
+	}
+
+</table>

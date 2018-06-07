@@ -1,0 +1,33 @@
+﻿@model AplikacjaQuizowa.Models.Categorie
+
+@{
+    ViewBag.Title = "Usuwanie kategorii";
+}
+
+
+<h3>Jesteś pewnien, że chcesz usunąć?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" /> |
+            @Html.ActionLink("Wróć do listy kategori", "Index")
+        </div>
+    }
+</div>
+<script>
+	$("#myDIV").addClass("col-xs-12 col-sm-8 col-md-5 col-sm-offset-2 col-md-offset-4");
+</script>

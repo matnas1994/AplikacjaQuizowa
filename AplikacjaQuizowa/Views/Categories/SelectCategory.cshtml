@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AplikacjaQuizowa.Models.Categorie>
+
+@{
+	ViewBag.Title = "Quiz";
+}
+
+<h2>Wybierz kategorie</h2>
+
+<p>Wpisz jaka kategoria Cie interesuje:</p>
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<br>
+
+<ul id="myList">
+	@foreach (var item in Model)
+	{
+		<li>@Html.ActionLink(item.Name, "StartSolve", "questions", new { id = item.CategorieId }, null)</li>
+	}
+</ul>
+
+<script>
+	$("#myDIV").addClass("col-xs-12 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1");
+	$(document).ready(function () {
+		$("#myInput").on("keyup", function () {
+			var value = $(this).val().toLowerCase();
+			$("#myList li").filter(function () {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>

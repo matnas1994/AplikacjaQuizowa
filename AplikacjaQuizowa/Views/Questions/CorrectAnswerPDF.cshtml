@@ -1,0 +1,35 @@
+﻿@model AplikacjaQuizowa.Models.CorrectAnswerViewModel
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>CorrectAnswerPDF</title>
+	<style>
+	body {
+	counter-reset: section;
+	}
+
+	h2::before {
+	counter-increment: section;
+	content: counter(section) ".";
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<p style="font-size: 300%; text-align: center;">@Model.Categorie.Name</p>
+		@foreach (var item in Model.CorrectAnswer)
+		{
+			<h2>@item.Question</h2>
+			<li>@item.Answer</li>
+			
+		}
+
+	</div>
+</body>
+</html>

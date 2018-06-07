@@ -1,0 +1,26 @@
+﻿
+@{
+	ViewBag.Title = "Rezultat";
+}
+
+
+<h2>
+	Wynik:
+	@ViewData["Score"]
+	/
+	@ViewData["CountQuestion"]
+</h2>
+
+<h2>
+	Procentowo:
+	@ViewData["Percent"]
+	%
+</h2>
+<hr/>
+<h2>
+	@Html.ActionLink("Quiz w formacie pdf", "QuestionPDF", new { id = ViewData["CategorieId"] })
+</h2>
+
+<h2>
+	@Html.ActionLink("Poprawne odpowiedzi pdf", "CorrectAnswerPDF", new { id = ViewData["CategorieId"] })
+</h2>

@@ -1,0 +1,40 @@
+﻿
+@model AplikacjaQuizowa.Models.QuestionToAnsersModelView
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>QuestionPDF</title>
+	<style>
+	body {
+	counter-reset: section;
+	}
+
+	h2::before {
+	counter-increment: section;
+	content: counter(section) ".";
+	}
+	</style>
+</head>
+<body>
+	<div>
+		<p style="font-size: 300%; text-align: center;">@Model.Categorie.Name</p>
+			@foreach (var question in Model.QuestionToAnswers)
+			{			
+					<h2>@question.Contents</h2>
+				
+				foreach (var answer in question.Answer)
+				{
+					<li>@answer.AnswerText</li>
+				}
+			}
+		
+	</div>
+</body>
+</html>

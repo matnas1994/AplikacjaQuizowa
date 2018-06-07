@@ -1,0 +1,43 @@
+﻿@model AplikacjaQuizowa.Models.QuestionToAnsersModelView
+@{
+	ViewBag.Title = "Quiz";
+}
+
+
+<div class="container">
+	<h2>@Model.Categorie.Name</h2>
+	<br />
+	@{
+		int counter = 0;
+	}
+
+	@using (Html.BeginForm())
+	{
+		@Html.HiddenFor(model => model.Categorie.CategorieId , new { @id = "CategorieId", @Name = "CategorieId" })
+		foreach (var item in Model.QuestionToAnswers)
+		{
+			<h2>
+				@(++counter)
+				@item.Contents
+			</h2>
+			<hr />
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-6">
+					@Html.HiddenFor(model => item.QuestionId, new { @id = "QuestionId", @Name = "QuestionId" })
+					@foreach (var answer in item.Answer)
+					{
+						<h3>
+							@Html.RadioButtonFor(model => answer, answer.AnswerText, new { @id = "answer" + item.QuestionId, @Name = "answer" + item.QuestionId })
+							@Html.Label(answer.AnswerText, new { Class = "label", style = "color:black" })
+						</h3>
+						<br />
+					}
+				</div>
+			</div>
+
+		}
+
+		<input type="submit" class="btn btn-primary btn-lg btn-block" />
+	}
+</div>

@@ -1,0 +1,26 @@
+﻿@model AplikacjaQuizowa.Models.Categorie
+
+@{
+    ViewBag.Title = "Szczegóły kategorii";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.CategorieId }) |
+    @Html.ActionLink("Wróć do listy kategori", "Index")
+</p>
+
+<script>
+	$("#myDIV").addClass("col-xs-12 col-sm-10 col-md-4 col-sm-offset-1 col-md-offset-4");
+</script>
