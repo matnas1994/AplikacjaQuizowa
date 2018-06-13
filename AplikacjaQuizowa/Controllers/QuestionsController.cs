@@ -74,13 +74,9 @@ namespace AplikacjaQuizowa.Controllers
             foreach (var item in categorie.ToList())
             {
                 Question question = db.Questions.Find(item.QuestionId);
-                QuestionToAnswer questionToAnswer = new QuestionToAnswer();
+                QuestionToAnswer questionToAnswer = new QuestionToAnswer(question.Answer1, question.Answer2, question.Answer3, question.CorrectAnswer);
                 questionToAnswer.QuestionId = question.QuestionId;
                 questionToAnswer.Contents = question.Contents;
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer1 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer2 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer3 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.CorrectAnswer });
                 questionToAnswer.mixingAnswer();
                 questionToAnsersModelView.QuestionToAnswers.Add(questionToAnswer);
             }
@@ -426,13 +422,9 @@ namespace AplikacjaQuizowa.Controllers
             foreach (var item in categorie.ToList())
             {
                 Question question = db.Questions.Find(item.QuestionId);
-                QuestionToAnswer questionToAnswer = new QuestionToAnswer();
+                QuestionToAnswer questionToAnswer = new QuestionToAnswer(question.Answer1, question.Answer2, question.Answer3, question.CorrectAnswer); ;
                 questionToAnswer.QuestionId = question.QuestionId;
                 questionToAnswer.Contents = question.Contents;
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer1 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer2 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.Answer3 });
-                questionToAnswer.Answer.Add(new Answer { AnswerText = question.CorrectAnswer });
                 questionToAnswer.mixingAnswer();
                 questionToAnsersModelView.QuestionToAnswers.Add(questionToAnswer);
             }

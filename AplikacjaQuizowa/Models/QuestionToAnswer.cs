@@ -13,13 +13,16 @@ namespace AplikacjaQuizowa.Models
 
         public List<Answer> Answer { get; set; }   
 
-        public QuestionToAnswer()
+        public QuestionToAnswer(string Answer1, string Answer2, string Answer3, string CorrectAnswer)
         {
             Answer = new List<Answer>();
+            Answer.Add(new Answer { AnswerText = Answer1 });
+            Answer.Add(new Answer { AnswerText = Answer2 });
+            Answer.Add(new Answer { AnswerText = Answer3 });
+            Answer.Add(new Answer { AnswerText = CorrectAnswer });
         }
 
         public void mixingAnswer() {
- 
             int n = Answer.Count;
             Random rnd = new Random(DateTime.Now.Millisecond-QuestionId);
             while (n > 1)

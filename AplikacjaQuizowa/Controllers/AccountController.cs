@@ -24,60 +24,6 @@ namespace AplikacjaQuizowa.Controllers
         public AccountController()
         {
         }
-  
-        //private Uri RediredUri
-        //{
-        //    get
-        //    {
-        //        var uriBuilder = new UriBuilder(Request.Url);
-        //        uriBuilder.Query = null;
-        //        uriBuilder.Fragment = null;
-        //        uriBuilder.Path = Url.Action("facebookCallback");
-        //        return uriBuilder.Uri;
-        //    }
-        //}
-
-        //[AllowAnonymous]
-        //public ActionResult Facebook()
-        //{
-        //    var fb = new FacebookClient();
-        //    var loginUrl = fb.GetLoginUrl(new
-        //    {
-        //        client_id = "280812782448716",
-        //        client_secret = "188101d5ece1e2cbcc876ec85097a695",
-        //        redirect_uri = RediredUri.AbsoluteUri,
-        //        response_type = "code",
-        //        scope="email" 
-        //    });
-        //    return Redirect(loginUrl.AbsoluteUri);
-        //}
-
-        //[AllowAnonymous]
-        //public ActionResult FacebookCallback(string code)
-        //{
-        //    var fb = new FacebookClient();
-        //    dynamic result = fb.Post("oauth/access_token", new 
-        //    {
-        //        client_id = "280812782448716",
-        //        client_secret = "188101d5ece1e2cbcc876ec85097a695",
-        //        redirect_uri = RediredUri.AbsoluteUri,
-        //        code = code
-        //    });
-        //    var accessToken = result.access_token;
-        //    Session["AccesToken"] = accessToken;
-        //    fb.AccessToken = accessToken;
-        //    dynamic me = fb.Get("me?fields=link,first_name,currency,last_name,email,gender,locale,timezone,verified,picture,age_range");
-        //    string email = me.email;
-        //    string lastname = me.last_name;
-        //    string picture = me.picture.data.url;
-        //    FormsAuthentication.SetAuthCookie(email, false);
-
-        //    var user = new ApplicationUser { UserName = lastname, Email = email };
-
-
-        //    return RedirectToAction("Login", "Account");
-
-        //}
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
